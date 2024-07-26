@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Wall
+  - Door
+  - Enemy
+  - StartRoom
+  - PropsRoom
+  - EndRoom
+  - StartDoor
+  - NormalDoor
+  - EndDoor
+  - PropsDoor
+  - ToEndDoor
   layers:
   - Default
   - TransparentFX
@@ -49,4 +60,7 @@ TagManager:
     locked: 0
   - name: enemy
     uniqueID: 914383057
+    locked: 0
+  - name: Door
+    uniqueID: 2587472489
     locked: 0
