@@ -22,6 +22,8 @@ TagManager:
   - RoundWorm
   - Coin
   - Poop
+  - SliverKey
+  - GoldKey
   layers:
   - Default
   - TransparentFX

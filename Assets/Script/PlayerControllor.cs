@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Animations;
 
@@ -22,7 +23,8 @@ public class PlayerControllor : MonoBehaviour
     public float CurrentHp;
     public float shootatk = 5;
     public float boomatk = 10;
-    public int keyNum = 0;
+    public bool sliveKey = false;
+    public bool goldKey = false;
     public int Money = 0;
 
     private bool isAttacking = false;
@@ -103,6 +105,19 @@ public class PlayerControllor : MonoBehaviour
             Debug.Log("Have Died");
             Destroy(gameObject);
         }
+        if (sliveKey == true)
+        {
+            GameObject.Find("Door_Open").SetActive(true);
+            GameObject.FindWithTag("PropsDoor").GetComponent<BoxCollider2D>().enabled = false;
+            Destroy(GameObject.FindWithTag("PropsDoor").GetComponent<Rigidbody2D>());
+            sliveKey = false;
+        }
+        if (goldKey == true)
+        {
+            GameObject.Find("End_Door_Open").SetActive(true);
+            GameObject.FindWithTag("EndDoor").GetComponent<BoxCollider2D>().enabled = false;
+            goldKey = false;
+        }
     }
     public void SwitchAnimation()//¶¯»­ÇÐ»»
     {
@@ -111,7 +126,7 @@ public class PlayerControllor : MonoBehaviour
         head_anima.SetFloat("Horizontal", x);
         head_anima.SetFloat("Vertical", y);
     }
-    private void OnTriggerEnter2D(Collider2D collision)//±»¹¥»÷
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("EnemyBullet") && isAttacking == false)
         {
@@ -124,6 +139,16 @@ public class PlayerControllor : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Money += 1;
+        }
+        if (collision.gameObject.CompareTag("SliveKey") && sliveKey == false)
+        {
+            sliveKey = true;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("GoldKey") && goldKey == false)
+        {
+            Destroy(collision.gameObject);
+            goldKey = true;
         }
     }
 }

@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1174590875
-  m_SortingLayer: 0
+  m_SortingLayerID: 914383057
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1414573625, guid: e797ace36d704e244afac7390acb1ba0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -177,8 +177,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1174590875
-  m_SortingLayer: 0
+  m_SortingLayerID: 914383057
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -1324948040, guid: e797ace36d704e244afac7390acb1ba0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 2360321767648613596}
   m_Layer: 0
   m_Name: RoundWorm
-  m_TagString: Enemy
+  m_TagString: RoundWorm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,8 +241,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8865579873426529902}
   - {fileID: 4885194231664493133}
@@ -304,7 +304,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0008327723, y: -0.006263864}
@@ -323,6 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoundWorm: {fileID: 6697308199802363958}
+  sliceKey: {fileID: 486455531684101832, guid: fc505197c957b4f42b789c9daed0477f, type: 3}
   inWhichRoom: {fileID: 0}
   state: 0
   _rigid: {fileID: 280203157894135365}

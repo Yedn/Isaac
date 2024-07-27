@@ -6,7 +6,10 @@ using UnityEngine;
 public class RoundWormControl : MonoBehaviour
 {
     public GameObject RoundWorm;
+    public GameObject sliceKey;
+
     public Room inWhichRoom;
+    public bool created=false;
     public enum State { Idle, Active, Die };
     public State state;
     public Rigidbody2D _rigid;
@@ -24,7 +27,7 @@ public class RoundWormControl : MonoBehaviour
     private float invoketime = 0.0f;
     public GameObject enemybullet;
     public float speed = 2.0f;
-    public float EnemyBullet_Speed = 2.0f;
+    public float EnemyBullet_Speed = 5.0f;
     public bool randomActive = false;//false！！恠 true！！好似
 
     public GameObject Head;
@@ -43,9 +46,15 @@ public class RoundWormControl : MonoBehaviour
     {
         if (CurrentHp <= 0.0f)
         {
-            Debug.Log("RoundWorm Has Died");
+            //Debug.Log("RoundWorm Has Died");
             state = State.Die;
             RoundWorm.SetActive(false);
+            if (created == false)
+            {
+                Instantiate(sliceKey, transform.position, Quaternion.identity);
+                created = true;
+            }
+            
             inWhichRoom.EnemyNum -= 1;
         }
 
@@ -77,7 +86,7 @@ public class RoundWormControl : MonoBehaviour
     public void RandomMove()
     {
         CanBeAttacked = false;
-        headanima.SetTrigger("GoDown");
+        //headanima.SetTrigger("GoDown");
         headanima.SetBool("UpToDown", true);
         headanima.SetBool("DownToUp", false);
         InvokeMove();
@@ -86,38 +95,31 @@ public class RoundWormControl : MonoBehaviour
     public void InvokeMove()
     {
         direction = (Direction)UnityEngine.Random.Range(0, 4);
-        //Debug.Log(direction);
         switch (direction)
         {
             case Direction.up:
                 //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, gameObject.transform.position + new Vector3(0f, 1f, 0f) , speed*Time.deltaTime);
                 gameObject.transform.position = gameObject.transform.position + new Vector3(0f, 1f, 0f);
-                CanBeAttacked = true;
+                //CanBeAttacked = true;
                 break;
             case Direction.down:
                 //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, gameObject.transform.position + new Vector3(0f, -1f, 0f), speed * Time.deltaTime);
                 gameObject.transform.position = gameObject.transform.position + new Vector3(0f, -1f, 0f);
-                CanBeAttacked = true;
+                //CanBeAttacked = true;
                 break;
             case Direction.left:
                 gameObject.transform.position = gameObject.transform.position + new Vector3(-1f, 0f, 0f);
-                CanBeAttacked = true;
+                //CanBeAttacked = true;
                 break;
             case Direction.right:
                 gameObject.transform.position = gameObject.transform.position + new Vector3(1f, 0f, 0f);
-                CanBeAttacked = true;
+                //CanBeAttacked = true;
                 break;
         }
-        headanima.SetTrigger("GoUp"); 
+        //headanima.SetTrigger("GoUp"); 
         headanima.SetBool("UpToDown", false);
         headanima.SetBool("DownToUp", true);
         CanBeAttacked = true;
-    }
-
-    public void Show()
-    {
-        gameObject.SetActive(true);
-        
     }
 
     public void RandomAttack()

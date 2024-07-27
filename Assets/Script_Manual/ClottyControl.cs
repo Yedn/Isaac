@@ -52,6 +52,7 @@ public class ClottyControl : MonoBehaviour
         {
             RandomMove();
         }
+
     }
 
     public void CanActive()
