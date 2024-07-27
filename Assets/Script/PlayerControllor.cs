@@ -140,12 +140,12 @@ public class PlayerControllor : MonoBehaviour
             Destroy(collision.gameObject);
             Money += 1;
         }
-        if (collision.gameObject.CompareTag("SliveKey") && sliveKey == false)
+        if (collision.gameObject.CompareTag("SliverKey"))
         {
             sliveKey = true;
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.CompareTag("GoldKey") && goldKey == false)
+        if (collision.gameObject.CompareTag("GoldKey"))
         {
             Destroy(collision.gameObject);
             goldKey = true;

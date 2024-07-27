@@ -49,12 +49,12 @@ public class RoundWormControl : MonoBehaviour
             //Debug.Log("RoundWorm Has Died");
             state = State.Die;
             RoundWorm.SetActive(false);
-            if (created == false)
+            if (created == false && GameObject.FindWithTag("Player").GetComponent<PlayerControllor>().sliveKey == false)
             {
                 Instantiate(sliceKey, transform.position, Quaternion.identity);
                 created = true;
             }
-            
+            created = true;
             inWhichRoom.EnemyNum -= 1;
         }
 
