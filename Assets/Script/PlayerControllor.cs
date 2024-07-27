@@ -110,7 +110,6 @@ public class PlayerControllor : MonoBehaviour
             GameObject.Find("Door_Open").SetActive(true);
             GameObject.Find("PropsDoor").GetComponent<BoxCollider2D>().enabled = false;
             Destroy(GameObject.FindWithTag("PropsDoor").GetComponent<Rigidbody2D>());
-            sliveKey = false;
         }
         if (goldKey == true)
         {
@@ -134,7 +133,6 @@ public class PlayerControllor : MonoBehaviour
                 head_anima.SetBool("isHitten", true);
                 CurrentHp -= collision.GetComponent<EnemyBulletControl>().harm;
         }
-
         if (collision.gameObject.CompareTag("Coin"))
         {
             Destroy(collision.gameObject);

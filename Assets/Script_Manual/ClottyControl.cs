@@ -52,7 +52,6 @@ public class ClottyControl : MonoBehaviour
         {
             RandomMove();
         }
-
     }
 
     public void CanActive()
@@ -106,7 +105,7 @@ public class ClottyControl : MonoBehaviour
         }
     }
 
-    public void HitColor()
+    public void HitColor()//¹¥»÷ÉÁË¸
     {
         sr.color = Color.red;
         Invoke("ResetColor", 0.1f);

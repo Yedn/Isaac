@@ -17,7 +17,6 @@ public class Room : MonoBehaviour
     public int EnemyNum;//房间内敌人数量
     public List<GameObject> EnemyList = new List<GameObject>();
     public bool isActive = false;
-    public EnemyManager enemyManager;
 
     [Header("ExploredInformation")]
     public bool HasExploed;
@@ -39,7 +38,7 @@ public class Room : MonoBehaviour
 
     public void ShouldClose()//是否应该关门
     {
-        if (PlayerInRoom == true && (HasExploed==false))
+        if (PlayerInRoom == true && (HasExploed == false))
         {
             Invoke("CloseTheDoor", 0.5f);
             isActive = true;
@@ -54,13 +53,13 @@ public class Room : MonoBehaviour
                     enemy.GetComponent<RoundWormControl>().state = RoundWormControl.State.Active;
                 }
             }
-           //enemyManager.isActive = true;
+            //enemyManager.isActive = true;
         }
     }
 
-    public void ShouldOpen()
+    public void ShouldOpen()//判断是否要开门
     {
-        if (PlayerInRoom == true && HasExploed==true)
+        if (PlayerInRoom == true && HasExploed == true)
         {
             OpenTheDoor();
         }
@@ -73,7 +72,6 @@ public class Room : MonoBehaviour
             PlayerInRoom = true;
             CameraControllor.instance.ChangeTarget(transform);
             ShouldClose();
-            
         }
         else
         {
@@ -88,32 +86,21 @@ public class Room : MonoBehaviour
         {
             transform.Find("Door_left").Find("Door_L_Open").gameObject.SetActive(true);
             transform.Find("Door_left").gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            //Destroy(transform.Find("Door_left").gameObject.GetComponent<Rigidbody2D>());
-            //Debug.Log("Opend Left");
         }
         if (UpHasRoom)
         {
             transform.Find("Door_up").Find("Door_U_Open").gameObject.SetActive(true);
-            //Destroy(GameObject.Find("Door_up").GetComponent<Rigidbody2D>());
             transform.Find("Door_up").gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            //Destroy(GameObject.Find("Door_up").GetComponent<Rigidbody2D>());
-            //Debug.Log("Opend Up");
         }
         if (DownHasRoom)
         {
             transform.Find("Door_down").Find("Door_D_Open").gameObject.SetActive(true);
-            //Destroy(GameObject.Find("Door_down").GetComponent<Rigidbody2D>());
             transform.Find("Door_down").gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            //Destroy(GameObject.Find("Door_down").GetComponent<Rigidbody2D>());
-            //Debug.Log("Opend Down");
         }
         if (RightHasRoom)
         {
             transform.Find("Door_right").Find("Door_R_Open").gameObject.SetActive(true);
-            transform.Find("Door_right").gameObject.GetComponent<BoxCollider2D>().enabled=false;
-            //Destroy(transform.Find("Door_right").gameObject.GetComponent<Rigidbody2D>());
-            //Destroy(GameObject.Find("Door_right").GetComponent<Rigidbody2D>());
-            //Debug.Log("Opend Right");
+            transform.Find("Door_right").gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 
@@ -141,45 +128,3 @@ public class Room : MonoBehaviour
         }
     }
 }
-    /*public void UpdateRoom(float xOffset,float yOffset)//算StepToStart和DoorNum
-    {
-        StepToStart = (int)(Mathf.Abs(transform.position.x / xOffset) + Mathf.Abs(transform.position.y / yOffset));
-        if (LeftHasRoom)
-        {
-            DoorNum++;
-        }
-        if(RightHasRoom)
-        {
-            DoorNum++;
-        }
-        if (UpHasRoom)
-        {
-            DoorNum++;
-        }
-        if (DownHasRoom)
-        {
-            DoorNum++;
-        }
-    }*/
-
-/*    private void OnTriggerEnter2D(Collider2D collision)//玩家碰门检测
-    {
-        if (collision.CompareTag("Player"))
-        {
-            CameraControllor.instance.ChangeTarget(transform);
-        }
-    }*/
-    /*public void ControlDoor()
-    {
-        if (PlayerInRoom == true && EnemyNum >0)
-        {
-            CloseTheDoor();
-        }
-        else
-        {
-            OpenTheDoor();
-        }
-    }
-    
-}
-*/

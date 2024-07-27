@@ -8,26 +8,27 @@ public class RoundWormControl : MonoBehaviour
     public GameObject RoundWorm;
     public GameObject sliceKey;
 
-    public Room inWhichRoom;
-    public bool created=false;
-    public enum State { Idle, Active, Die };
+    public Room inWhichRoom;//在哪个房间
+    public bool created=false;//有爆过银钥匙？
+    public enum State { Idle, Active, Die };//三个状态
     public State state;
     public Rigidbody2D _rigid;
-    public float MaxHp = 4.0f;
+    public float MaxHp = 4.0f;//最大生命值
     public float CurrentHp;
     public Animator headanima;
     public Animator bodyanima;
-    public bool CanBeAttacked = true;
+    public bool CanBeAttacked = true;//可受击？
 
     public SpriteRenderer sr;
     public Color StartColor;
     private enum Direction { up, down, left, right };
+    [Header("ActiveInformation")]
     private Direction direction;
     private float act_frequency = 2.0f;
     private float invoketime = 0.0f;
     public GameObject enemybullet;
-    public float speed = 2.0f;
-    public float EnemyBullet_Speed = 5.0f;
+    public float speed = 2.0f;//怪的速度
+    public float EnemyBullet_Speed = 5.0f;//子弹速度
     public bool randomActive = false;//false——走 true——攻击
 
     public GameObject Head;
@@ -39,6 +40,8 @@ public class RoundWormControl : MonoBehaviour
         state = State.Idle;
         CurrentHp = MaxHp;
         _rigid = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+        StartColor = sr.color;
     }
 
     // Update is called once per frame

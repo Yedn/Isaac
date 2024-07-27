@@ -19,7 +19,11 @@ public class RoomManager : MonoBehaviour
             {
                 room.HasExploed = false;
             }
-            room.OpenTheDoor();
+            if (room.CompareTag("Room") || room.CompareTag("StartRoom") || room.CompareTag("EndRoom"))
+            {
+                room.OpenTheDoor();
+            }
+            
         }
     }
 
@@ -29,10 +33,14 @@ public class RoomManager : MonoBehaviour
         foreach(Room room in rooms)
         {
             room.PlayerInside();
-            if (room.EnemyNum == 0)
+            if (room.EnemyNum == 0 && (room.CompareTag("Room") || room.CompareTag("EndRoom")))
             {
                 room.HasExploed = true;
                 room.ShouldOpen();
+            }
+            if (room.CompareTag("PropsRoom") && GameObject.Find("PlayerControllor").GetComponent<PlayerControllor>().sliveKey == true)
+            {
+                room.OpenTheDoor();
             }
 
         }
