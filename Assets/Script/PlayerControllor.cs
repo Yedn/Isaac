@@ -108,7 +108,7 @@ public class PlayerControllor : MonoBehaviour
         if (sliveKey == true)
         {
             GameObject.Find("Door_Open").SetActive(true);
-            GameObject.FindWithTag("PropsDoor").GetComponent<BoxCollider2D>().enabled = false;
+            GameObject.Find("PropsDoor").GetComponent<BoxCollider2D>().enabled = false;
             Destroy(GameObject.FindWithTag("PropsDoor").GetComponent<Rigidbody2D>());
             sliveKey = false;
         }
