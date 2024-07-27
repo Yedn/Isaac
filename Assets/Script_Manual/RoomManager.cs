@@ -30,7 +30,6 @@ public class RoomManager : MonoBehaviour
         foreach(Room room in rooms)
         {
             room.PlayerInside();
-            //room.ShouldClose();
         }
     }
 }

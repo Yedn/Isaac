@@ -36,18 +36,25 @@ public class Room : MonoBehaviour
         DoorLeft.SetActive(LeftHasRoom);
     }
 
-    public void ShouldClose()
+    public void ShouldClose()//是否应该开门
     {
-        Debug.Log("Judging");
+        //Debug.Log("Judging");
         if (PlayerInRoom == true && (HasExploed==false))
         {
-            Debug.Log("Should Close");
-            Invoke("CloseTheDoor", 1.0f);
+            //Debug.Log("Should Close");
+            Invoke("CloseTheDoor", 0.5f);
             isActive = true;
+/*            foreach (GameObject enemy in EnemyList) 
+            {
+                if (enemy.CompareTag("Clotty") )
+                {
+                    enemy.GetComponent<ClottyControl>().CanActive();
+                }
+            }*/
         }
     }
 
-    public void PlayerInside()
+    public void PlayerInside()//Player是否在房间内
     {
         if (Collider.bounds.Contains(GameObject.Find("PlayerControllor").transform.position))
         {
@@ -61,8 +68,7 @@ public class Room : MonoBehaviour
         }
     }
 
-
-    public void OpenTheDoor()//开门 Show开门图层 && 删除刚体
+    public void OpenTheDoor()//开门 Show开门图层 && 停用碰撞体
     {
         if (LeftHasRoom)
         {
@@ -97,7 +103,7 @@ public class Room : MonoBehaviour
         }
     }
 
-    public void CloseTheDoor()//关门 关开门图层 && 添加刚体
+    public void CloseTheDoor()//关门 关开门图层 && 启用碰撞体
     {
         if (LeftHasRoom)
         {
@@ -119,7 +125,6 @@ public class Room : MonoBehaviour
             transform.Find("Door_right").Find("Door_R_Open").gameObject.SetActive(false);
             transform.Find("Door_right").gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
-        Debug.Log("Closed");
     }
 }
     /*public void UpdateRoom(float xOffset,float yOffset)//算StepToStart和DoorNum

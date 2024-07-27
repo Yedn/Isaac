@@ -32,7 +32,7 @@ public class BulletControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if(other.gameObject.CompareTag("Enemy"))//打中怪物
+        if(other.gameObject.CompareTag("Clotty"))//打中怪物
         {
             Destroy(gameObject);
         }

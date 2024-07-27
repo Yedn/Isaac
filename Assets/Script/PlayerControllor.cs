@@ -111,7 +111,6 @@ public class PlayerControllor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("EnemyBullet") && isAttacking == false)
         {
-            MaxHp -= 0.5f;
             if (CurrentHp > 0.5)
             {
                 body_anima.SetBool("isHitten", true);
