@@ -19,6 +19,7 @@ TagManager:
   - EnemyBullet
   - Clotty
   - Bullet
+  - RoundWorm
   layers:
   - Default
   - TransparentFX

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1174590875
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -1414573625, guid: e797ace36d704e244afac7390acb1ba0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -178,7 +178,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1174590875
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -1324948040, guid: e797ace36d704e244afac7390acb1ba0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 7511409574518811703}
   - component: {fileID: 280203157894135365}
   - component: {fileID: 1516200284630985964}
+  - component: {fileID: 2360321767648613596}
   m_Layer: 0
   m_Name: RoundWorm
   m_TagString: Enemy
@@ -239,9 +240,9 @@ Transform:
   m_GameObject: {fileID: 6697308199802363958}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.65, y: -0.121, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8865579873426529902}
   - {fileID: 4885194231664493133}
@@ -309,3 +310,31 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0008327723, y: -0.006263864}
   m_Size: {x: 0.19900022, y: 0.28568587}
   m_Direction: 0
+--- !u!114 &2360321767648613596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6697308199802363958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a22f7552d31e6b4db6c414452da2aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoundWorm: {fileID: 6697308199802363958}
+  inWhichRoom: {fileID: 0}
+  state: 0
+  _rigid: {fileID: 280203157894135365}
+  MaxHp: 4
+  CurrentHp: 0
+  headanima: {fileID: 1564763537603514798}
+  bodyanima: {fileID: 8729067133716017145}
+  CanBeAttacked: 1
+  RundomNum: 0
+  enemybullet: {fileID: 8800772441803750685, guid: 4787bd1fd3a5aa646b3de5a3f587a29e, type: 3}
+  speed: 1.5
+  EnemyBullet_Speed: 2
+  randomActive: 0
+  Head: {fileID: 3168983957214313735}
+  Body: {fileID: 3403256147685471048}

@@ -17,6 +17,7 @@ public class Room : MonoBehaviour
     public int EnemyNum;//房间内敌人数量
     public List<GameObject> EnemyList = new List<GameObject>();
     public bool isActive = false;
+    public EnemyManager enemyManager;
 
     [Header("ExploredInformation")]
     public bool HasExploed;
@@ -36,21 +37,32 @@ public class Room : MonoBehaviour
         DoorLeft.SetActive(LeftHasRoom);
     }
 
-    public void ShouldClose()//是否应该开门
+    public void ShouldClose()//是否应该关门
     {
-        //Debug.Log("Judging");
         if (PlayerInRoom == true && (HasExploed==false))
         {
-            //Debug.Log("Should Close");
             Invoke("CloseTheDoor", 0.5f);
             isActive = true;
-/*            foreach (GameObject enemy in EnemyList) 
+            foreach (GameObject enemy in EnemyList)
             {
-                if (enemy.CompareTag("Clotty") )
+                if (enemy.CompareTag("Clotty"))
                 {
-                    enemy.GetComponent<ClottyControl>().CanActive();
+                    enemy.GetComponent<ClottyControl>().state = ClottyControl.State.Active;
                 }
-            }*/
+                else if (enemy.CompareTag("RoundWorm"))
+                {
+                    enemy.GetComponent<RoundWormControl>().state = RoundWormControl.State.Active;
+                }
+            }
+           //enemyManager.isActive = true;
+        }
+    }
+
+    public void ShouldOpen()
+    {
+        if (PlayerInRoom == true && HasExploed==true)
+        {
+            OpenTheDoor();
         }
     }
 
@@ -61,12 +73,14 @@ public class Room : MonoBehaviour
             PlayerInRoom = true;
             CameraControllor.instance.ChangeTarget(transform);
             ShouldClose();
+            
         }
         else
         {
             PlayerInRoom = false;
         }
     }
+
 
     public void OpenTheDoor()//开门 Show开门图层 && 停用碰撞体
     {

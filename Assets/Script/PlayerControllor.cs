@@ -111,12 +111,9 @@ public class PlayerControllor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("EnemyBullet") && isAttacking == false)
         {
-            if (CurrentHp > 0.5)
-            {
                 body_anima.SetBool("isHitten", true);
                 head_anima.SetBool("isHitten", true);
-                CurrentHp -= 0.5f;
-            }
+                CurrentHp -= 1.0f;
         }
         if (CurrentHp <= 0)
         {

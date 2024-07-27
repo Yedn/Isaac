@@ -183,7 +183,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 075a29054a76291489b9db5194ed1cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clotty: {fileID: 343136822107853424}
+  inWhichRoom: {fileID: 0}
   state: 0
   _rigid: {fileID: 6230227783179758544}
   MaxHp: 6
   CurrentHp: 0
+  anima: {fileID: 2468036047090604365}
+  RundomNum: 0
+  enemybullet: {fileID: 8800772441803750685, guid: 4787bd1fd3a5aa646b3de5a3f587a29e, type: 3}
+  speed: 3
+  EnemyBullet_Speed: 2

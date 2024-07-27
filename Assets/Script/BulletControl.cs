@@ -36,5 +36,6 @@ public class BulletControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 }

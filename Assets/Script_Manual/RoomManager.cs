@@ -20,7 +20,6 @@ public class RoomManager : MonoBehaviour
                 room.HasExploed = false;
             }
             room.OpenTheDoor();
-            
         }
     }
 
@@ -30,6 +29,12 @@ public class RoomManager : MonoBehaviour
         foreach(Room room in rooms)
         {
             room.PlayerInside();
+            if (room.EnemyNum == 0)
+            {
+                room.HasExploed = true;
+                room.ShouldOpen();
+            }
+
         }
     }
 }

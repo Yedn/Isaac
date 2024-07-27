@@ -6,10 +6,15 @@ public class EnemyBulletControl : MonoBehaviour
 {
     public float Speed = 10.0f;
     public float LiveTime = 3.0f;
-
-    private Vector2 _Direction;
+    public float harm = 1.0f;
     private float _HasLiveTime = 0;
 
+    public Rigidbody2D rigidbody;
+
+    private void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody2D>();
+    }
     private void Update()
     {
         _HasLiveTime += Time.deltaTime;
@@ -17,13 +22,6 @@ public class EnemyBulletControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        transform.Translate(_Direction * (Speed * Time.deltaTime));
-    }
-
-    public void SetDirection(Vector2 dir)
-    {
-        _Direction = dir;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -36,5 +34,10 @@ public class EnemyBulletControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void SetSpeed(Vector2 speed)
+    {
+        rigidbody.velocity = speed;
     }
 }
