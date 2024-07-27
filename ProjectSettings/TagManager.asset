@@ -20,6 +20,8 @@ TagManager:
   - Clotty
   - Bullet
   - RoundWorm
+  - Coin
+  - Poop
   layers:
   - Default
   - TransparentFX
@@ -68,4 +70,7 @@ TagManager:
     locked: 0
   - name: Door
     uniqueID: 2587472489
+    locked: 0
+  - name: Poops
+    uniqueID: 985637581
     locked: 0

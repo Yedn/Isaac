@@ -13,7 +13,6 @@ public class PlayerControllor : MonoBehaviour
     public Animator body_anima;
 
     public float speed = 3.0f;
-    public float cooltime = 1.0f;
 
     public float x = 0;
     public float y = 0;
@@ -36,44 +35,44 @@ public class PlayerControllor : MonoBehaviour
         //改变物体速度
         rb.velocity = new Vector2(x * speed, y * speed);
     }//WASD走路
-    void Shoot()
+    public void Shoot()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            head_anima.SetTrigger("isUp");
-            GameObject bulletObj = Instantiate(Bullet);
-            bulletObj.transform.position = transform.position;
-            BulletControl bullet = bulletObj.GetComponent<BulletControl>();
-            bullet.SetDirection(Vector2.up);
-            isAttacking = true;
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            head_anima.SetTrigger("isDown");
-            GameObject bulletObj = Instantiate(Bullet);
-            bulletObj.transform.position = transform.position;
-            BulletControl bullet = bulletObj.GetComponent<BulletControl>();
-            bullet.SetDirection(Vector2.down);
-            isAttacking = true;
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            head_anima.SetTrigger("isRight");
-            GameObject bulletObj = Instantiate(Bullet);
-            bulletObj.transform.position = transform.position;
-            BulletControl bullet = bulletObj.GetComponent<BulletControl>();
-            bullet.SetDirection(Vector2.right);
-            isAttacking = true;
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            head_anima.SetTrigger("isLeft");
-            GameObject bulletObj = Instantiate(Bullet);
-            bulletObj.transform.position = transform.position;
-            BulletControl bullet = bulletObj.GetComponent<BulletControl>();
-            bullet.SetDirection(Vector2.left);
-            isAttacking = true;
-        }
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                head_anima.SetTrigger("isUp");
+                GameObject bulletObj = Instantiate(Bullet);
+                bulletObj.transform.position = transform.position;
+                BulletControl bullet = bulletObj.GetComponent<BulletControl>();
+                bullet.SetDirection(Vector2.up);
+                isAttacking = true;
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                head_anima.SetTrigger("isDown");
+                GameObject bulletObj = Instantiate(Bullet);
+                bulletObj.transform.position = transform.position;
+                BulletControl bullet = bulletObj.GetComponent<BulletControl>();
+                bullet.SetDirection(Vector2.down);
+                isAttacking = true;
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                head_anima.SetTrigger("isRight");
+                GameObject bulletObj = Instantiate(Bullet);
+                bulletObj.transform.position = transform.position;
+                BulletControl bullet = bulletObj.GetComponent<BulletControl>();
+                bullet.SetDirection(Vector2.right);
+                isAttacking = true;
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                head_anima.SetTrigger("isLeft");
+                GameObject bulletObj = Instantiate(Bullet);
+                bulletObj.transform.position = transform.position;
+                BulletControl bullet = bulletObj.GetComponent<BulletControl>();
+                bullet.SetDirection(Vector2.left);
+                isAttacking = true;
+            }
     }//Arrow键射击
     void NotAttacking()//未在攻击
     {
@@ -99,6 +98,11 @@ public class PlayerControllor : MonoBehaviour
         Shoot();
         NotAttacking();
         SwitchAnimation();
+        if (CurrentHp <= 0)
+        {
+            Debug.Log("Have Died");
+            Destroy(gameObject);
+        }
     }
     public void SwitchAnimation()//动画切换
     {
@@ -113,12 +117,13 @@ public class PlayerControllor : MonoBehaviour
         {
                 body_anima.SetBool("isHitten", true);
                 head_anima.SetBool("isHitten", true);
-                CurrentHp -= 1.0f;
+                CurrentHp -= collision.GetComponent<EnemyBulletControl>().harm;
         }
-        if (CurrentHp <= 0)
+
+        if (collision.gameObject.CompareTag("Coin"))
         {
-            Debug.Log("Have Died");
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
+            Money += 1;
         }
     }
 }

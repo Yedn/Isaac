@@ -331,7 +331,8 @@ MonoBehaviour:
   headanima: {fileID: 1564763537603514798}
   bodyanima: {fileID: 8729067133716017145}
   CanBeAttacked: 1
-  RundomNum: 0
+  sr: {fileID: 0}
+  StartColor: {r: 0, g: 0, b: 0, a: 0}
   enemybullet: {fileID: 8800772441803750685, guid: 4787bd1fd3a5aa646b3de5a3f587a29e, type: 3}
   speed: 1.5
   EnemyBullet_Speed: 2
