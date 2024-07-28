@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.SceneManagement;
 
 public class PlayerControllor : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class PlayerControllor : MonoBehaviour
     public bool sliveKey = false;
     public bool goldKey = false;
     public int Money = 0;
+
+    public SpriteRenderer sr;
+    public Color StartColor;
 
     private bool isAttacking = false;
 
@@ -89,6 +93,7 @@ public class PlayerControllor : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         CurrentHp = MaxHp;
+        StartColor = sr.color;
     }
 
     // Update is called once per frame
@@ -104,11 +109,8 @@ public class PlayerControllor : MonoBehaviour
         {
             Debug.Log("Have Died");
             Destroy(gameObject);
+            SceneManager.LoadScene("Start");
         }
-/*        if (sliveKey == true)
-        {
-            Destroy(GameObject.FindWithTag("PropsDoor").GetComponent<Rigidbody2D>());
-        }*/
     }
     public void SwitchAnimation()//¶¯»­ÇÐ»»
     {
@@ -116,6 +118,18 @@ public class PlayerControllor : MonoBehaviour
         body_anima.SetFloat("Vertical", y);
         head_anima.SetFloat("Horizontal", x);
         head_anima.SetFloat("Vertical", y);
+    }
+
+    public void EndGame()
+    {
+        if(SceneManager.GetActiveScene().name == "Level1")
+        {
+            SceneManager.LoadScene("Level2");
+        }
+        else
+        {
+            SceneManager.LoadScene("Welcome");
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -139,10 +153,18 @@ public class PlayerControllor : MonoBehaviour
         {
             goldKey = true;
             Destroy(collision.gameObject);
+            Invoke("EndGame", 2.0f);
         }
-        if(collision.gameObject.CompareTag("EndDoor") && goldKey == true)
-        {
-            Debug.Log("End");
-        }
+    }
+
+    public void HitColor()
+    {
+        sr.color = Color.red;
+        Invoke("ResetColor", 0.1f);
+    }
+
+    public void ResetColor()
+    {
+        sr.color = StartColor;
     }
 }
