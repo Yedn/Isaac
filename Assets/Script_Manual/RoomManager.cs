@@ -8,7 +8,6 @@ public class RoomManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         foreach (Room room in rooms)
         {
             if (room.CompareTag("StartRoom"))
@@ -23,7 +22,6 @@ public class RoomManager : MonoBehaviour
             {
                 room.OpenTheDoor();
             }
-            
         }
     }
 
@@ -42,7 +40,10 @@ public class RoomManager : MonoBehaviour
             {
                 room.OpenTheDoor();
             }
-
+            if (room.CompareTag("EndRoom") && GameObject.Find("PlayerControllor").GetComponent<PlayerControllor>().goldKey == true)
+            {
+                room.OpenTheEndDoor();
+            }
         }
     }
 }

@@ -13,6 +13,11 @@ public class Room : MonoBehaviour
     public bool LeftHasRoom, RightHasRoom, UpHasRoom, DownHasRoom;//四个方向有没有门
     public BoxCollider2D Collider;
 
+    public bool isEndRoom;
+    public GameObject EndDoor;
+    public bool hasEndDoor;
+
+
     [Header("EnemyInformation")]
     public int EnemyNum;//房间内敌人数量
     public List<GameObject> EnemyList = new List<GameObject>();
@@ -34,6 +39,7 @@ public class Room : MonoBehaviour
         DoorDown.SetActive(DownHasRoom);
         DoorRight.SetActive(RightHasRoom);
         DoorLeft.SetActive(LeftHasRoom);
+        EndDoor.SetActive(hasEndDoor);
     }
 
     public void ShouldClose()//是否应该关门
@@ -79,7 +85,6 @@ public class Room : MonoBehaviour
         }
     }
 
-
     public void OpenTheDoor()//开门 Show开门图层 && 停用碰撞体
     {
         if (LeftHasRoom)
@@ -103,7 +108,13 @@ public class Room : MonoBehaviour
             transform.Find("Door_right").gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
-
+    public void OpenTheEndDoor()
+    {
+        if (hasEndDoor)
+        {
+            transform.Find("EndDoor").Find("End_Door_Open").gameObject.SetActive(true);
+        }
+    }
     public void CloseTheDoor()//关门 关开门图层 && 启用碰撞体
     {
         if (LeftHasRoom)

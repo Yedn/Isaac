@@ -105,18 +105,10 @@ public class PlayerControllor : MonoBehaviour
             Debug.Log("Have Died");
             Destroy(gameObject);
         }
-        if (sliveKey == true)
+/*        if (sliveKey == true)
         {
-            GameObject.Find("Door_Open").SetActive(true);
-            GameObject.Find("PropsDoor").GetComponent<BoxCollider2D>().enabled = false;
             Destroy(GameObject.FindWithTag("PropsDoor").GetComponent<Rigidbody2D>());
-        }
-        if (goldKey == true)
-        {
-            GameObject.Find("End_Door_Open").SetActive(true);
-            GameObject.FindWithTag("EndDoor").GetComponent<BoxCollider2D>().enabled = false;
-            goldKey = false;
-        }
+        }*/
     }
     public void SwitchAnimation()//¶¯»­ÇÐ»»
     {
@@ -145,8 +137,12 @@ public class PlayerControllor : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("GoldKey"))
         {
-            Destroy(collision.gameObject);
             goldKey = true;
+            Destroy(collision.gameObject);
+        }
+        if(collision.gameObject.CompareTag("EndDoor") && goldKey == true)
+        {
+            Debug.Log("End");
         }
     }
 }

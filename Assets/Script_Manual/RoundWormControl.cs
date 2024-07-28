@@ -40,8 +40,8 @@ public class RoundWormControl : MonoBehaviour
         state = State.Idle;
         CurrentHp = MaxHp;
         _rigid = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
-        StartColor = sr.color;
+        //sr = GetComponent<SpriteRenderer>();
+        //StartColor = sr.color;
     }
 
     // Update is called once per frame
@@ -49,7 +49,6 @@ public class RoundWormControl : MonoBehaviour
     {
         if (CurrentHp <= 0.0f)
         {
-            //Debug.Log("RoundWorm Has Died");
             state = State.Die;
             RoundWorm.SetActive(false);
             if (created == false && GameObject.FindWithTag("Player").GetComponent<PlayerControllor>().sliveKey == false)
@@ -89,7 +88,6 @@ public class RoundWormControl : MonoBehaviour
     public void RandomMove()
     {
         CanBeAttacked = false;
-        //headanima.SetTrigger("GoDown");
         headanima.SetBool("UpToDown", true);
         headanima.SetBool("DownToUp", false);
         InvokeMove();
@@ -101,22 +99,16 @@ public class RoundWormControl : MonoBehaviour
         switch (direction)
         {
             case Direction.up:
-                //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, gameObject.transform.position + new Vector3(0f, 1f, 0f) , speed*Time.deltaTime);
                 gameObject.transform.position = gameObject.transform.position + new Vector3(0f, 1f, 0f);
-                //CanBeAttacked = true;
                 break;
             case Direction.down:
-                //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, gameObject.transform.position + new Vector3(0f, -1f, 0f), speed * Time.deltaTime);
                 gameObject.transform.position = gameObject.transform.position + new Vector3(0f, -1f, 0f);
-                //CanBeAttacked = true;
                 break;
             case Direction.left:
                 gameObject.transform.position = gameObject.transform.position + new Vector3(-1f, 0f, 0f);
-                //CanBeAttacked = true;
                 break;
             case Direction.right:
                 gameObject.transform.position = gameObject.transform.position + new Vector3(1f, 0f, 0f);
-                //CanBeAttacked = true;
                 break;
         }
         //headanima.SetTrigger("GoUp"); 
@@ -139,7 +131,7 @@ public class RoundWormControl : MonoBehaviour
             Destroy(collision.gameObject);
             _rigid.AddForce(collision.gameObject.GetComponent<Rigidbody2D>().velocity.normalized, ForceMode2D.Impulse);
             CurrentHp -= 1.0f;
-            HitColor();
+            //HitColr();
         }
     }
 
