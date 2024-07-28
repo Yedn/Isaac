@@ -24,6 +24,7 @@ TagManager:
   - Poop
   - SliverKey
   - GoldKey
+  - PressStart
   layers:
   - Default
   - TransparentFX
