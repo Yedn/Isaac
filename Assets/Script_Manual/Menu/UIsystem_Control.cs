@@ -93,7 +93,7 @@ public class UIsystem_Control : MonoBehaviour
     IEnumerator Loadlevel()
     {
         loading.SetActive(true);
-        AsyncOperation asyncload = SceneManager.LoadSceneAsync("Level1");
+        AsyncOperation asyncload = SceneManager.LoadSceneAsync("Start");
         asyncload.allowSceneActivation = true;
         while (!asyncload.isDone)
         {
