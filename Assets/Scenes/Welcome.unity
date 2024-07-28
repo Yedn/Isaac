@@ -729,10 +729,10 @@ RectTransform:
   - {fileID: 2024106880}
   m_Father: {fileID: 1003093217}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -1920, y: 0}
-  m_SizeDelta: {x: 480, y: 270}
+  m_SizeDelta: {x: -1440, y: -810}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &642600605
 Animator:
@@ -1020,7 +1020,7 @@ RectTransform:
   m_GameObject: {fileID: 990988454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1211515235}
@@ -1465,10 +1465,10 @@ RectTransform:
   - {fileID: 546781827}
   m_Father: {fileID: 1003093217}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 480, y: 272}
+  m_SizeDelta: {x: -1440, y: -808}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1134436570
 Animator:
@@ -1650,10 +1650,10 @@ RectTransform:
   - {fileID: 1854126845}
   m_Father: {fileID: 1003093217}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -1084}
-  m_SizeDelta: {x: 480, y: 270}
+  m_SizeDelta: {x: -1440, y: -810}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1211515236
 Animator:
@@ -1931,10 +1931,10 @@ RectTransform:
   - {fileID: 56920934}
   m_Father: {fileID: 1003093217}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 480, y: 272}
+  m_SizeDelta: {x: -1440, y: -808}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1515216381
 Animator:
@@ -2383,7 +2383,7 @@ RectTransform:
   m_GameObject: {fileID: 1969237467}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1999999, y: 1.1999999, z: 1.1999999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 642600604}
